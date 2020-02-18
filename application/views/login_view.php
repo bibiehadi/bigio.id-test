@@ -38,14 +38,14 @@
 					</div>
 					<div class="panel-body">
 						
-						<form action="<?php echo site_url('login');?>" class="form-horizontal" id="validate-form">
+						<form action="<?php echo site_url('login/auth');?>" method="post" class="form-horizontal" id="validate-form" >
 							<div class="form-group mb-md">
 		                        <div class="col-xs-12">
 		                        	<div class="input-group">							
 										<span class="input-group-addon">
 											<i class="ti ti-user"></i>
 										</span>
-										<input type="text" class="form-control" placeholder="Username" data-parsley-minlength="6" placeholder="At least 6 characters" required>
+										<input name="username" type="text" class="form-control" placeholder="Username" data-parsley-minlength="6" placeholder="At least 6 characters" required>
 									</div>
 		                        </div>
 							</div>
@@ -56,7 +56,7 @@
 										<span class="input-group-addon">
 											<i class="ti ti-key"></i>
 										</span>
-										<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+										<input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
 									</div>
 		                        </div>
 							</div>
@@ -72,13 +72,14 @@
 									</div>
 								</div>
 							</div>
-						</form>
+						
 					</div>
 					<div class="panel-footer">
 						<div class="clearfix">
 							<a href="extras-registration.html" class="btn btn-default pull-left">Register</a>
-							<input action="submit" class="btn btn-primary pull-right" value="Login">
+							<input type="submit" class="btn btn-primary pull-right" value="Login">
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>
