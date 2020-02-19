@@ -14,7 +14,10 @@ class Pasar extends CI_Controller {
     
     public function index()
     {   
-        $this->load->view('pasar_view');
+        if($this->session->userdata('role')==='adm'){
+            $this->load->view('pasar_view');
+        }
+        
     }
 
     public function dataJSON(){

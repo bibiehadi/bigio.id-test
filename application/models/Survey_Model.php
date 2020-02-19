@@ -8,15 +8,37 @@ class Survey_Model extends CI_Model {
         return $data->result();
     }
 
+    function get_accept(){
+        $this->db->where('status','Disetujui');
+        $data = $this->db->get('tbl_survey');
+        return $data->result();
+    }
+
+    function get_srv($id){
+        $this->db->where('id_user',$id);
+        $data = $this->db->get('tbl_survey');
+        return $data->result();
+    }
+
     function get_data($id){
         $this->db->where($id);
         $data = $this->db->get('tbl_survey');
         return $data->row();
     }
 
-    function add($data){
-        $this->db->insert('tbl_survey',$data);
-        return $this->db->insert_id();
+    function add_data($data){
+        $user = $this->session->userdata('id');
+        $set = array();
+        foreach($data['komoditas'] as $kom){
+            $set[] = array_merge($kom,array(
+                'id_pasar'=>$data['id_pasar'],
+                'date'=>$data['date'],
+                'id_user'=>$user,
+                'status'=>'Menunggu'
+            ));
+        }
+        if(count($set)>0)
+        return $this->db->insert_batch('tbl_survey',$set);
     }
 
     function update($where, $data){

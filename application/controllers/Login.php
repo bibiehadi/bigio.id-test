@@ -34,11 +34,11 @@ class Login extends CI_Controller {
             $this->session->set_userdata($sessdata);
 
             if($role === 'adm'){
-                redirect('dashboard');
+                redirect('survey');
             }else if($role === 'srv'){
-                redirect('dashboard/surveyor');
+                redirect('survey');
             }else if($role === 'vst'){
-                redirect('dashboard/visitor');
+                redirect('survey');
             }
         }else{
             $this->session->set_flashdata('msg', 'Username atau Password salah');

@@ -9,13 +9,14 @@ class Dashboard extends CI_Controller {
         if($this->session->userdata('logged_in')!=TRUE){
             redirect('login');
         }
+        $this->load->model('survey_model','survey');
     }
     
     public function index(){
-        $this->load->view('dashboard_view'); 
-        
+        if($this->session->userdata('role')==='adm'){    
+            $this->load->view('dashboard_view'); 
+        }
     }
-        
 }
 
 /* End of file Controllername.php */

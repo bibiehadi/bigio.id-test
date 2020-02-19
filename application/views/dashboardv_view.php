@@ -19,7 +19,7 @@
                                     </div>
                                     <div class="panel-body">
                                       <div id="devices">
-                                      <a class="btn btn-success pull-right" href="<?php echo site_url('survey/survey_form');?>"><i class="glyphicon glyphicon-plus"></i>Add</a>
+                                      <button class="btn btn-success pull-right" onclick="add_survey()"><i class="glyphicon glyphicon-plus"></i>Add</button>
         
                                         <table cellpadding="0" cellspacing="0" class="table table-striped table-fixed-header m-n" id="tb_survey">
                                           <thead>
@@ -162,13 +162,7 @@
             // "sAjaxSource": "../server_side/scripts/server_processing.php"
                 // deferRender: true,
 				"ajax" : {
-					"url" : "<?php if(($this->session->userdata('role'))==='adm'){
-                                echo site_url('survey/dataJSON');}
-                                else if(($this->session->userdata('role'))==='vst'){
-                                echo site_url('survey/vstJSON');}
-                                else if(($this->session->userdata('role'))==='srv'){
-                                echo site_url('survey/srvJSON');}
-                                 ?>",
+					"url" : "<?php echo site_url('survey/dataJSON') ?>",
                     "type" : "POST",
                     "dataSrc" : ""
 				},
