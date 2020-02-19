@@ -14,7 +14,6 @@ class Pasar extends CI_Controller {
     
     public function index()
     {   
-        // print_r($data);
         $this->load->view('pasar_view');
     }
 
@@ -49,11 +48,6 @@ class Pasar extends CI_Controller {
 
     public function edit_data($id){
         $data = $this->pasar->get_data(array('id' => $id));
-        echo json_encode($data);
-    }
-
-    public function get_data_by($id){
-        $data = $this->pasar->get_data($id);
         echo json_encode($data);
     }
 

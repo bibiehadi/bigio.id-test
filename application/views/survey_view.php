@@ -6,7 +6,7 @@
                         <div class="page-content">
                             <ol class="breadcrumb">
                                 <li><a href="index.html">Dashboard</a></li>
-                                <li class="active"><a href="#">Pasar</a></li>
+                                <li class="active"><a href="#">survey</a></li>
                             </ol>
                             <div class="container-fluid">
                             <div data-widget-group="group1">
@@ -14,19 +14,24 @@
                                 <div class="col-md-12">
                                   <div class="panel panel-default">
                                     <div class="panel-heading">
-                                      <h2>Data Pasar</h2>
+                                      <h2>Data Survey</h2>
                                       <div class="panel-ctrls"></div>
                                     </div>
                                     <div class="panel-body">
                                       <div id="devices">
-                                      <button class="btn btn-success pull-right" onclick="add_pasar()"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                      <button class="btn btn-success pull-right" onclick="add_survey()"><i class="glyphicon glyphicon-plus"></i>Add</button>
         
-                                        <table cellpadding="0" cellspacing="0" class="table table-striped table-fixed-header m-n" id="tb_pasar">
+                                        <table cellpadding="0" cellspacing="0" class="table table-striped table-fixed-header m-n" id="tb_survey">
                                           <thead>
                                             <tr>
-                                              <th>ID Pasar</th>
-                                              <th>Nama Pasar</th>
-                                              <th>Alamat</th>
+                                              <th>ID</th>
+                                              <th>Komoditas</th>
+                                              <th>Satuan</th>
+                                              <th>Harga</th>
+                                              <th>Pasar</th>
+                                              <th>User</th>
+                                              <th>Date</th>
+                                              <th>Status</th>
                                               <th width="15%">Action</th> 
                                             </tr>
                                           </thead>
@@ -57,8 +62,6 @@
         </div>
 
     
-    
-
 <!-- Modal -->
 <!-- Modal Add Device -->
          <div class="modal fade" id="modal_form" role="dialog" >
@@ -69,16 +72,59 @@
                        <h4 class="modal-title" id="modal-title">Add Data Pasar</h4>
                    </div>
                    <div class="modal-body form">
-                    <form id="form" action="＃" method="post">
+                    <form class="form-horizontal" id="form" action="＃" method="post">
                         <input type="hidden" value="" name="id"/> 
                         <div class="form-group">
-                            <label class="control-label">Nama Pasar</label>
-                            <input type="input" name="nama_pasar" class="form-control">
+                            <div class="row">
+                              <label class="control-label col-sm-2">Komoditas</label>
+                                <div class="col-sm-8">
+                                    <select name="komoditas" id="selector1" class="form_control">
+                                        <option value="">--- Pilih Komoditas ---</option>
+                                        <?php foreach ($komoditas as $row) : ?>
+                                        <option value="<?php echo $row->id; ?>"><?php echo $row->nama;?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+
+                                    <!-- <input type="input" name="komoditas" class="form-control"> -->
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Alamat Pasar</label>
-                            <input type="input" name="alamat" class="form-control">
+                            <div class="row">
+                              <label class="control-label col-sm-2">Harga</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group" >
+                                        <span class="input-group-addon"><i class="ti ">Rp. </i></span>
+                                        <input type="input" name="harga" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <div class="row">
+                              <label class="control-label col-sm-2">Pasar</label>
+                                <div class="col-sm-8">
+                                    <select name="pasar" id="selector2" class="form_control">
+                                        <option value="">--- Pilih Pasar ---</option>
+                                        <?php foreach ($pasar as $row) : ?>
+                                        <option value="<?php echo $row->id; ?>"><?php echo $row->nama;?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">    
+                                 <label class="col-sm-2 control-label">Date</label>
+                                <div class="col-sm-8">
+                                    <div class="input-group" >
+                                        <span class="input-group-addon"><i class="ti ti-calendar"></i></span>
+                                        <input type="text" class="form-control datepicker" id="datepicker" name="date">
+                                    </div>
+                                </div>
+                            </div>
+						</div>
+                        
                     </form>
                    </div>
                    <div class="modal-footer">
@@ -109,53 +155,70 @@
 <!-- End loading page level scripts-->
 
 <script type="text/javascript">
-		 table = $('#tb_pasar').DataTable({
+		 table = $('#tb_survey').DataTable({
 				"processing" : true,
 				"severSide"  : true,
 				"order" : [],
             // "sAjaxSource": "../server_side/scripts/server_processing.php"
                 // deferRender: true,
 				"ajax" : {
-					"url" : "<?php echo site_url('pasar/dataJSON') ?>",
+					"url" : "<?php echo site_url('survey/dataJSON') ?>",
                     "type" : "POST",
                     "dataSrc" : ""
 				},
 		  		"columns" : [
                 {"data" : "id"},
-		  		{"data" : "nama"},
-                {"data" : "alamat"},
-                {"data" : "action"},
+		  		{"data" : "komoditas"},
+		  		{"data" : "satuan"},
+                {"data" : "harga"},
+                {"data" : "pasar"},
+                {"data" : "user"},
+                {"data" : "date"},
+                {"data" : "status"},
+                {"data" : "action"}
 		  		],
 
 			});
 
-            function add_pasar(){
+            //datepicker
+            $('.datepicker').datepicker({
+                autoclose: true,
+                format: "yyyy-mm-dd",
+                todayHighlight: true,
+                orientation: "top auto",
+                todayBtn: true,
+                todayHighlight: true,  
+            });
+
+            function add_survey(){
                 save_method= 'add';
                 $('#form')[0].reset();
                 $('.form-group').removeClass('has-error');
                 $('.help-block').empty();
                 $('#modal_form').modal('show');
-                $('.modal-title').text('Add Data Pasar');
+                $('.modal-title').text('Add Data survey');
             }
 
-            function edit_pasar(id){
+            function edit_survey(id){
                 save_method = 'update';
                 $('#form')[0].reset();
                 $('.form-group').removeClass('has-error');
                 $('.help-block').empty(); 
             
                 $.ajax({
-                    url : "<?php echo site_url('pasar/edit_data/')?>" + id,
+                    url : "<?php echo site_url('survey/edit_data/')?>" + id,
                     type: "GET",
                     dataType: "JSON",
                     success: function(data)
                     
                     {
                         $('[name="id"]').val(data.id);
-                        $('[name="nama_pasar"]').val(data.nama);
-                        $('[name="alamat"]').val(data.alamat);
+                        $('[name="komoditas"]').val(data.id_komoditas).trigger('change');
+                        $('[name="harga"]').val(data.harga);
+                        $('[name="pasar"]').val(data.id_pasar);
+                        $('[name="date"]').val(data.date);
                         $('#modal_form').modal('show');
-                        $('.modal-title').text('Edit Data Pasar');
+                        $('.modal-title').text('Edit Data survey');
             
                     },
                     error: function (jqXHR, textStatus, errorThrown)
@@ -172,9 +235,9 @@
                 var url;
             
                 if(save_method == 'add') {
-                    url = "<?php echo site_url('pasar/add_data')?>";
+                    url = "<?php echo site_url('survey/add_data')?>";
                 } else {
-                    url = "<?php echo site_url('pasar/update_data')?>";
+                    url = "<?php echo site_url('survey/update_data')?>";
                 }
 
                 $.ajax({
@@ -205,10 +268,10 @@
                 });
             }
 
-            function delete_pasar(id){
+            function delete_survey(id){
                 if(confirm('Anda yakin ingin menghapus data ini ?')){
                     $.ajax({
-                        url: "<?php echo site_url('pasar/delete_data/') ?>"+id,
+                        url: "<?php echo site_url('survey/delete_data/') ?>"+id,
                         type: "POST",
                         dataType: "JSON",
                         success: function(data){
