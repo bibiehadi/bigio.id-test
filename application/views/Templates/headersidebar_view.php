@@ -44,7 +44,7 @@
 			</a>
 		</span>
 		
-		<a class="anavbar-brand" href="<?php echo site_url() ?>"><img style="width: 90px; height: 50px; margin: 5px" src="<?php echo base_url('assets/img/noc.png');?>"></a>
+		<a class="anavbar-brand" href="<?php echo site_url() ?>"><img style="width: 90px; height: 50px; margin: 5px" src="<?php echo base_url('assets/img/logo.png');?>"></a>
 
 		<div class="toolbar-icon-bg hidden-xs" id="toolbar-search">
             <div class="input-group">
@@ -287,11 +287,11 @@
 			<ul class="acc-menu">
 				<li class="nav-separator"><span>Explore</span></li>
 				<li><a href="<?php echo site_url('dashboard') ?>"><i class="ti ti-dashboard"></i><span>Dashboard</span><span class="badge badge-teal">2</span></a></li>	
-				<li><a href="javascript:;"><i class="ti ti-harddrive"></i><span>Discovery Devices</span></a>
+				<li><a href="javascript:;"><i class="ti ti-harddrive"></i><span>Survey</span></a>
 					<ul class="acc-menu">
 						<li><a href="#"><span>Our Devices</span></a>
 							<ul class="acc-menu">
-								<li><a href="<?php echo site_url('discover/ourDevices'); ?>">MikroTik</a></li>
+								<li><a href="<?php echo site_url(''); ?>">MikroTik</a></li>
 								<li><a href="#">Unifi</a></li>
 							</ul>
 						</li>
@@ -303,58 +303,17 @@
 						</li>
 					</ul>	
 				</li>
-				<li><a href="javascript:;"><i class="ti ti-rss-alt"></i><span>Hotspot</span></a>
-					<ul class="acc-menu">
-						<li><a href="<?php echo site_url('hotspot/userprofiles'); ?>">User Profiles</a></li>
-						<li><a href="<?php echo site_url('hotspot/users'); ?>">Users</a></li>
-						<li><a href="<?php echo site_url('hotspot/useractive'); ?>">Users Active</a></li>
-					</ul>
+				<li><a href="javascript:;"><i class="ti ti-rss-alt"></i><span>Pasar</span></a>
 				</li>
-				<li><a href="javascript:;"><i class="ti ti-pie-chart"></i><span>Graphics</span></a>
+				<li><a href="javascript:;"><i class="ti ti-pie-chart"></i><span>Komoditas</span></a>
 					<ul class="acc-menu">
 						<li><a href="ui-forms.html">Main Router</a></li>
 						<li><a href="form-components.html">Another Router</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;"><i class="ti ti-settings"></i><span>Settings</span></a>
-					<ul class="acc-menu">
-						<li><a href="ui-panels.html">Panels</a></li>
-						<li><a href="ui-advancedpanels.html">Draggable Panels</a></li>
 					</ul>
 				</li>
 			</ul>
 		</nav>
     </div>
 
-    <!-- <div class="widget" id="widget-progress">
-        <div class="widget-heading">
-            Progress
-        </div>
-        <div class="widget-body">
-
-            <div class="mini-progressbar">
-                <div class="clearfix mb-sm">
-                    <div class="pull-left">Bandwidth</div>
-                    <div class="pull-right">50%</div>
-                </div>
-                
-                <div class="progress">    
-                    <div class="progress-bar progress-bar-lime" style="width: 50%"></div>
-                </div>
-            </div>
-            <div class="mini-progressbar">
-                <div class="clearfix mb-sm">
-                    <div class="pull-left">Storage</div>
-                    <div class="pull-right">25%</div>
-                </div>
-                
-                <div class="progress">    
-                    <div class="progress-bar progress-bar-info" style="width: 25%"></div>
-                </div>
-            </div>
-
-        </div>
-    </div> -->
 </div>
 

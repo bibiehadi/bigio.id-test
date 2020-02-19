@@ -9,10 +9,8 @@ class Dashboard extends CI_Controller {
         if($this->session->userdata('logged_in')!=TRUE){
             redirect('login');
         }
-
     }
     
-
     public function index(){
         $this->load->view('dashboard_view'); 
         
