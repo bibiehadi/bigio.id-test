@@ -194,6 +194,7 @@
                 $.post('<?php echo site_url('survey/persetujuan')?>/'+id,function(respon){
                     if(respon.ok){
                         alert('Data survery berhasil diupdate');
+                        reload_table();
                     }
                     else{ alert('Gagal menambahkan data survey baru');
                     }
