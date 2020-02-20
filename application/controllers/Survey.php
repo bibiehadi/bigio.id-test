@@ -32,9 +32,9 @@ class Survey extends CI_Controller {
             $row['date'] = $data->date;
             $row['status'] = $data->status;
             if (($data->status)== 'Menunggu'){
-                $row['status'] = '<input class="bootstrap-switch" type="checkbox" checked="false" data-size="small" data-on-color="success" data-off-color="default" data-on-text="Acc" data-off-text="X">';
+                $row['status'] = '<input class="bootstrap-switch" type="checkbox" name="switch-acc" data-id="'.$data->id.'"  data-size="small" data-on-color="success" data-off-color="default" data-on-text="Acc" data-off-text="X">';
             }else {
-                $row['status'] = '<input class="bootstrap-switch" type="checkbox" checked="true" data-size="small" data-on-color="success" data-off-color="default" data-on-text="Acc" data-off-text="X">';
+                $row['status'] = '<input class="bootstrap-switch" type="checkbox" name="switch-acc" data-id="'.$data->id.'" checked data-size="small" data-on-color="success" data-off-color="default" data-on-text="Acc" data-off-text="X">';
             }
             $row['action'] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_survey('."'".$data->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                   <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_survey('."'".$data->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
@@ -119,18 +119,20 @@ class Survey extends CI_Controller {
         
     }
     
-    // public function add_data(){
-    //     $data = array(
-    //         'id_komoditas' => $this->input->post('komoditas'),
-    //         'harga' => $this->input->post('harga'),
-    //         'id_pasar' => $this->input->post('pasar'),
-    //         'id_user' => $this->session->userdata('id'),
-    //         'date' => $this->input->post('date'),
-    //         'status' => 'Menunggu',
-    //     );
-    //     $this->survey->add($data);
-    //     echo json_encode(array("status" => TRUE));
-    // }
+    public function persetujuan($id){
+        $data = $this->survey->get_status(array('id' => $id));
+        if ($data['status']==="Menunggu"){
+            $status = array('status'=> 'Disetujui');
+            $this->survey->update(array("id" => $id), $status);
+            echo json_encode(array('ok'=>TRUE));
+        }else if($data['status']==="Disetujui"){
+            $status = array('status'=> 'Menunggu');
+            $this->survey->update(array("id" => $id), $status);
+            echo json_encode(array('ok'=>TRUE));
+        }else{
+            echo json_encode(array('ok'=>false));
+        }
+    }
 
     public function edit_data($id){
         $data = $this->survey->get_data(array('id' => $id));

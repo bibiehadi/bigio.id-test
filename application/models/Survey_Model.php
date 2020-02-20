@@ -26,6 +26,12 @@ class Survey_Model extends CI_Model {
         return $data->row();
     }
 
+    function get_status($id){
+        $this->db->where($id);
+        $data = $this->db->get('tbl_survey');
+        return $data->row_array();
+    }
+
     function add_data($data){
         $user = $this->session->userdata('id');
         $set = array();

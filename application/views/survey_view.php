@@ -188,7 +188,20 @@
             table.on('draw.dt',function(){
                 $("input.bootstrap-switch").bootstrapSwitch();
             })
-            //datepicker
+
+            $('body').on('click','.bootstrap-switch',function(){
+                var id = $(this).find("input").attr('data-id');
+                $.post('<?php echo site_url('survey/persetujuan')?>/'+id,function(respon){
+                    if(respon.ok){
+                        alert('Data survery berhasil diupdate');
+                    }
+                    else{ alert('Gagal menambahkan data survey baru');
+                    }
+                },'json').fail(function(){
+                    alert('Gagal menambahkan data survey baru');
+                })
+            })
+            
             $('.datepicker').datepicker({
                 autoclose: true,
                 format: "yyyy-mm-dd",
