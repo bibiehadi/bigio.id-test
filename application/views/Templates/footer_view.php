@@ -124,4 +124,9 @@
 <!-- <script type="text/javascript" src="<?php echo base_url('') ?>assets/demo/demo-pickers.js"></script> -->
 <!-- End loading site level scripts -->
     
-    <!-- Load page level scripts
+    <!-- Load page level scripts -->1
+<script>
+//$(document).ready(function(){
+//    $('.bootstrap-switch').switch();
+//})
+</script>

@@ -286,30 +286,12 @@
         <nav role="navigation" class="widget-body">
 			<ul class="acc-menu">
 				<li class="nav-separator"><span>Explore</span></li>
-				<li><a href="<?php echo site_url('dashboard') ?>"><i class="ti ti-dashboard"></i><span>Dashboard</span><span class="badge badge-teal">2</span></a></li>	
-				<li><a href="javascript:;"><i class="ti ti-harddrive"></i><span>Survey</span></a>
-					<ul class="acc-menu">
-						<li><a href="#"><span>Our Devices</span></a>
-							<ul class="acc-menu">
-								<li><a href="<?php echo site_url(''); ?>">MikroTik</a></li>
-								<li><a href="#">Unifi</a></li>
-							</ul>
-						</li>
-						<li><a href="#"><span>Find Devices</span></a>
-							<ul class="acc-menu">
-								<li><a href="<?php echo site_url('discover/findNewDevices'); ?>">Mikrotik</a></li>
-								<li><a href="#">Unifi</a></li>
-							</ul>
-						</li>
-					</ul>	
+				<li><a href="<?php echo site_url('dashboard'); ?>"><i class="ti ti-dashboard"></i><span>Dashboard</span><span class="badge badge-teal">2</span></a></li>	
+				<li><a href="<?php echo site_url('survey'); ?>"><i class="ti ti-harddrive"></i><span>Survey</span></a>
 				</li>
-				<li><a href="javascript:;"><i class="ti ti-rss-alt"></i><span>Pasar</span></a>
+				<li><a href="<?php echo site_url('pasar'); ?>"><i class="ti ti-rss-alt"></i><span>Pasar</span></a>
 				</li>
-				<li><a href="javascript:;"><i class="ti ti-pie-chart"></i><span>Komoditas</span></a>
-					<ul class="acc-menu">
-						<li><a href="ui-forms.html">Main Router</a></li>
-						<li><a href="form-components.html">Another Router</a></li>
-					</ul>
+				<li><a href="<?php echo site_url('komoditas')?>"><i class="ti ti-pie-chart"></i><span>Komoditas</span></a>
 				</li>
 			</ul>
 		</nav>

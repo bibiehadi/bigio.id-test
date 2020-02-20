@@ -32,11 +32,9 @@ class Survey extends CI_Controller {
             $row['date'] = $data->date;
             $row['status'] = $data->status;
             if (($data->status)== 'Menunggu'){
-                $row['status'] = "<label class='label label-default'>Menunggu</label>";
-            }else if (($data->status)== 'Disetujui'){
-                $row['status'] = "<label class='label label-primary'>Disetujui</label>";
-            }else{
-                $row['status'] = "<label class='label label-danger'>Ditolak</label>";
+                $row['status'] = '<input class="bootstrap-switch" type="checkbox" checked="false" data-size="small" data-on-color="success" data-off-color="default" data-on-text="Acc" data-off-text="X">';
+            }else {
+                $row['status'] = '<input class="bootstrap-switch" type="checkbox" checked="true" data-size="small" data-on-color="success" data-off-color="default" data-on-text="Acc" data-off-text="X">';
             }
             $row['action'] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_survey('."'".$data->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
                   <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_survey('."'".$data->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';

@@ -185,7 +185,9 @@
 		  		],
 
 			});
-
+            table.on('draw.dt',function(){
+                $("input.bootstrap-switch").bootstrapSwitch();
+            })
             //datepicker
             $('.datepicker').datepicker({
                 autoclose: true,
